@@ -457,15 +457,15 @@ angular.module('stormpath', [
   ];
 }])
 .run(['$rootScope','$user','STORMPATH_CONFIG',function($rootScope,$user,STORMPATH_CONFIG){
-  $rootScope.user = $user.currentUser || null;
+  $rootScope[STORMPATH_CONFIG.scopeVariable] = $user.currentUser || null;
   $user.get().finally(function(){
-    $rootScope.user = $user.currentUser;
+    $rootScope[STORMPATH_CONFIG.scopeVariable] = $user.currentUser;
   });
   $rootScope.$on(STORMPATH_CONFIG.GET_USER_EVENT,function(){
-    $rootScope.user = $user.currentUser;
+    $rootScope[STORMPATH_CONFIG.scopeVariable] = $user.currentUser;
   });
   $rootScope.$on(STORMPATH_CONFIG.SESSION_END_EVENT,function(){
-    $rootScope.user = $user.currentUser;
+    $rootScope[STORMPATH_CONFIG.scopeVariable] = $user.currentUser;
   });
 }])
 

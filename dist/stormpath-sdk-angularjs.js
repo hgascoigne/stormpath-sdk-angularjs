@@ -2,7 +2,7 @@
  * stormpath-sdk-angularjs
  * Copyright Stormpath, Inc. 2015
  * 
- * @version v0.8.0-dev-2015-11-05
+ * @version v0.8.0-dev-2015-11-14
  * @link https://github.com/stormpath/stormpath-sdk-angularjs
  * @license Apache-2.0
  */
@@ -472,15 +472,15 @@ angular.module('stormpath', [
   ];
 }])
 .run(['$rootScope','$user','STORMPATH_CONFIG',function($rootScope,$user,STORMPATH_CONFIG){
-  $rootScope.user = $user.currentUser || null;
+  $rootScope[STORMPATH_CONFIG.scopeVariable] = $user.currentUser || null;
   $user.get().finally(function(){
-    $rootScope.user = $user.currentUser;
+    $rootScope[STORMPATH_CONFIG.scopeVariable] = $user.currentUser;
   });
   $rootScope.$on(STORMPATH_CONFIG.GET_USER_EVENT,function(){
-    $rootScope.user = $user.currentUser;
+    $rootScope[STORMPATH_CONFIG.scopeVariable] = $user.currentUser;
   });
   $rootScope.$on(STORMPATH_CONFIG.SESSION_END_EVENT,function(){
-    $rootScope.user = $user.currentUser;
+    $rootScope[STORMPATH_CONFIG.scopeVariable] = $user.currentUser;
   });
 }])
 

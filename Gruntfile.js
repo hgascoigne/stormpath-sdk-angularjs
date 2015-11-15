@@ -191,7 +191,7 @@ module.exports = function (grunt) {
     ['ngdocs','connect:ngdocs','open:docs','watch:ngdocs']
   );
 
-  grunt.registerTask('build', 'Perform a normal build', ['concat', 'html2js','uglify','docs']);
+  grunt.registerTask('build', 'Perform a normal build', ['concat', 'html2js','uglify']);
 
   grunt.registerTask('dist', 'Perform a distribution', ['build', 'copy:dist']);
 
