@@ -2,7 +2,7 @@
  * stormpath-sdk-angularjs
  * Copyright Stormpath, Inc. 2015
  * 
- * @version v0.8.0-dev-2015-11-14
+ * @version v0.9.0-dev-2015-11-14
  * @link https://github.com/stormpath/stormpath-sdk-angularjs
  * @license Apache-2.0
  */
@@ -960,7 +960,7 @@ angular.module('stormpath.auth',['stormpath.CONFIG'])
             data: data
           })
         );
-        var op2 = op.then(cacheCurrentUser).then(authenticatedEvent);
+        var op2 = op.then(authenticatedEvent).then(cacheCurrentUser);
         op.catch(authenticationFailureEvent);
         return op2;
 

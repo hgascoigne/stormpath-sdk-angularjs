@@ -124,7 +124,7 @@ angular.module('stormpath.auth',['stormpath.CONFIG'])
             data: data
           })
         );
-        var op2 = op.then(cacheCurrentUser).then(authenticatedEvent);
+        var op2 = op.then(authenticatedEvent).then(cacheCurrentUser);
         op.catch(authenticationFailureEvent);
         return op2;
 
